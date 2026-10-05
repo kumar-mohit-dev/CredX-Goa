@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CredX Goa - SaaS Promo</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+  
+  body, html { margin: 0; padding: 0; background: #0f172a; overflow: hidden; font-family: 'Inter', sans-serif; }
+  
+  /* 16:9 Canvas */
+  .canvas {
+    width: 100vw; height: 56.25vw; /* 16:9 aspect ratio */
+    max-height: 100vh; max-width: 177.78vh;
+    margin: auto; position: absolute; top: 0; bottom: 0; left: 0; right: 0;
+    overflow: hidden; background: #f8fafb;
+  }
+
+  .scene {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    opacity: 0; background-size: cover; background-position: center;
+  }
+
+  .text-overlay {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    text-align: center; color: #0f172a; width: 80%;
+    opacity: 0; z-index: 10;
+  }
+
+  .text-overlay h1 {
+    font-size: 4vw; font-weight: 900; letter-spacing: -0.04em; margin: 0;
+    background: rgba(255,255,255,0.9); padding: 20px 40px; border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  }
+
+  .text-overlay h1 span { color: #0d9488; }
+
+  /* --- ANIMATION TIMELINE (30 SECONDS TOTAL) --- */
+
+  /* Scene 1: Leaderboard (0s - 8s) */
+  #scene1 {
+    background-image: url('01-leaderboard.svg');
+    animation: fadeInOut 8s linear forwards, panDown 8s ease-in-out forwards;
+  }
+  #text1 { animation: textFade 7s ease-in-out 0.5s forwards; }
+
+  /* Scene 2: Faculty Workspace (8s - 15s) */
+  #scene2 {
+    background-image: url('03-faculty-workspace.svg');
+    animation: fadeInOut 7s linear 7.5s forwards, zoomIn 7s ease-in-out 7.5s forwards;
+  }
+  #text2 { animation: textFade 6s ease-in-out 8s forwards; }
+
+  /* Scene 3: Talent Snapshot (15s - 22s) */
+  #scene3 {
+    background-image: url('02-talent-snapshot.svg');
+    animation: fadeInOut 7s linear 14.5s forwards, panRight 7s ease-in-out 14.5s forwards;
+  }
+  #text3 { animation: textFade 6s ease-in-out 15s forwards; }
+
+  /* Scene 4: Competitions (22s - 30s) */
+  #scene4 {
+    background-image: url('04-competitions.svg');
+    animation: fadeInOutEnd 8s linear 21.5s forwards, zoomOut 8s ease-in-out 21.5s forwards;
+  }
+  #text4 { animation: textFadeEnd 7s ease-in-out 22.5s forwards; }
+
+  /* --- KEYFRAMES --- */
+  @keyframes fadeInOut {
+    0% { opacity: 0; }
+    5% { opacity: 1; }
+    95% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  
+  @keyframes fadeInOutEnd {
+    0% { opacity: 0; }
+    5% { opacity: 1; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes textFade {
+    0% { opacity: 0; transform: translate(-50%, -40%); }
+    10% { opacity: 1; transform: translate(-50%, -50%); }
+    90% { opacity: 1; transform: translate(-50%, -50%); }
+    100% { opacity: 0; transform: translate(-50%, -60%); }
+  }
+
+  @keyframes textFadeEnd {
+    0% { opacity: 0; transform: translate(-50%, -40%); }
+    15% { opacity: 1; transform: translate(-50%, -50%); }
+    100% { opacity: 1; transform: translate(-50%, -50%); }
+  }
+
+  /* Camera Moves */
+  @keyframes panDown {
+    0% { background-size: 120%; background-position: top center; }
+    100% { background-size: 120%; background-position: bottom center; }
+  }
+  @keyframes zoomIn {
+    0% { background-size: 100%; background-position: center; }
+    100% { background-size: 115%; background-position: center 30%; }
+  }
+  @keyframes panRight {
+    0% { background-size: 110%; background-position: left center; }
+    100% { background-size: 110%; background-position: right center; }
+  }
+  @keyframes zoomOut {
+    0% { background-size: 120%; background-position: top center; }
+    100% { background-size: 100%; background-position: top center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+  <!-- Scene 1 -->
+  <div class="scene" id="scene1"></div>
+  <div class="text-overlay" id="text1">
+    <h1>A 9.0 CGPA tells half the story.<br>Meet <span>CredX Goa</span>.</h1>
+  </div>
+
+  <!-- Scene 2 -->
+  <div class="scene" id="scene2"></div>
+  <div class="text-overlay" id="text2">
+    <h1>Zero fake claims.<br><span>1-click institutional verification.</span></h1>
+  </div>
+
+  <!-- Scene 3 -->
+  <div class="scene" id="scene3"></div>
+  <div class="text-overlay" id="text3">
+    <h1>Deep talent insights.<br><span>Direct college hiring.</span></h1>
+  </div>
+
+  <!-- Scene 4 -->
+  <div class="scene" id="scene4"></div>
+  <div class="text-overlay" id="text4">
+    <h1>Opportunities matched to your skills.<br><span>Build. Verify. Get Hired.</span></h1>
+  </div>
+</div>
+
+<script>
+  // Refresh the page to restart the animation loop
+  setTimeout(() => {
+    window.location.reload();
+  }, 32000);
+</script>
+
+</body>
+</html>
